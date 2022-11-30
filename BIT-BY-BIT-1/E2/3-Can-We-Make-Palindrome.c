@@ -1,30 +1,24 @@
 #include<stdio.h>
 int main()
 {
-    // Write your stuff here
     int t;
     scanf("%d",&t);
     while(t--){
-        int n,i;
+        int n,i,count=0;
         scanf("%d",&n);
         char s[n];
         int arr[26]={0};
         scanf("%s",s);
         for(i=0;i<n;i++){
-            arr[s[i]-'a']++;
+            if(++arr[s[i]-'a']%2==1)
+                count++;
+            else
+                count--;
         }
-        int odd=0;
-        for(i=0;i<26;i++){
-            if(arr[i]%2==1){
-                odd++;
-            }
-        }
-        if(odd==0 || odd==1){
+        if(count<=1)
             printf("YES\n");
-        }else{
+        else
             printf("NO\n");
-        }
     }
-
     return 0;
 }
